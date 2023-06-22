@@ -1,3 +1,6 @@
+set termguicolors
+set t_Co=256
+syntax on
 " insert fancy signifiers with abbrevs
 iabbrev todo ·
 iabbrev done ×
@@ -37,5 +40,3 @@ augroup JournalHideUIElements
     autocmd VimEnter * set scrollbind
 
 augroup END
-
-syntax on
