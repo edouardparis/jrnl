@@ -20,8 +20,8 @@
     packages.x86_64-linux.default =
       # starts nvim with 2 months of journal entries ahead and behind
       # nvim --cmd 'source .nvimrc' -O 2023/10 2023/11 2023/12 2024/01 2024/02
-      pkgs.writeScriptBin "jrnl" ''
-        nvim --cmd 'source .nvimrc' -O $(
+      pkgs.writeScriptBin "journal" ''
+        nvim --cmd 'source ~/flakes/jrnl/.nvimrc' -O $(
           ${pkgs.dateutils}/bin/dateseq \
               "$(date --date "2 months ago" +${f})" \
               "$(date --date "2 months" +${f})" \
