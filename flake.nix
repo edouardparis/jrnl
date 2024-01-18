@@ -22,7 +22,7 @@
 
       installPhase = ''
         mkdir -p $out/bin
-        cp ${./.nvimrc} $out/.nvimrc
+        cp ${./nvimrc} $out/.nvimrc
         cat > $out/bin/journal <<EOF
         #!/usr/bin/env bash
         ${pkgs.neovim}/bin/nvim --cmd 'source $out/.nvimrc' -O \$(
