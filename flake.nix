@@ -23,17 +23,17 @@
       installPhase = ''
         mkdir -p $out/bin
         cp ${./nvimrc} $out/.nvimrc
+        cp ${./setup.sh} $out/bin/setup.sh
         cat > $out/bin/journal <<EOF
         #!/usr/bin/env bash
-        ${pkgs.neovim}/bin/nvim --cmd 'source $out/.nvimrc' -O \$(
-          ${pkgs.dateutils}/bin/dateseq \
-              "\$(date --date "2 months ago" +${f})" \
-              "\$(date --date "2 months" +${f})" \
-              -i ${f} \
-              -f ${f}
-        )
+        export dateutils_bin=${pkgs.dateutils}/bin
+        export f='${f}'
+        source $out/bin/setup.sh
+        create_if_not_exist
+        ${pkgs.neovim}/bin/nvim --cmd 'source $out/.nvimrc' -O \$(dates)
         EOF
         chmod +x $out/bin/journal
+        chmod +x $out/bin/setup.sh
       '';
     };
 
