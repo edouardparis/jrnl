@@ -1,10 +1,8 @@
-set termguicolors
-set t_Co=256
-syntax on
 " insert fancy signifiers with abbrevs
 iabbrev todo ·
 iabbrev done ×
 
+set fillchars=eob:\ 
 " select the task list and hit `gq` to sort and group by status
 set formatprg=sort\ -V
 
@@ -21,9 +19,9 @@ augroup JournalSyntax
     autocmd BufReadPost * syntax match JournalMoved /^>.*/             " lines containing 'moved' items: >
     autocmd BufReadPost * syntax match JournalHeader /^\<\u\+\>.*/     " lines starting with caps
 
-    autocmd BufReadPost * highlight JournalAll    ctermfg=12
-    autocmd BufReadPost * highlight JournalHeader ctermfg=12
-    autocmd BufReadPost * highlight JournalDone   ctermfg=12
+    autocmd BufReadPost * highlight JournalAll    ctermfg=8
+    autocmd BufReadPost * highlight JournalHeader ctermfg=8
+    autocmd BufReadPost * highlight JournalDone   ctermfg=8
     autocmd BufReadPost * highlight JournalEvent  ctermfg=6               " cyan
     autocmd BufReadPost * highlight JournalMoved  ctermfg=5               " pink
     autocmd BufReadPost * highlight JournalNote   ctermfg=3               " yellow
